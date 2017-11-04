@@ -325,6 +325,7 @@
           var delta = 0;
           if (e.wheelDelta) { delta = -e.wheelDelta/120; }
           if (e.detail) { delta = e.detail / 3; }
+          if (e.deltaY) { delta = e.deltaY / 120; }
 
           var target = e.target || e.srcTarget || e.srcElement;
           if ($(target).closest('.' + o.wrapperClass).is(me.parent())) {
@@ -390,8 +391,7 @@
         {
           if (window.addEventListener)
           {
-            target.addEventListener('DOMMouseScroll', _onWheel, false );
-            target.addEventListener('mousewheel', _onWheel, false );
+            target.addEventListener('wheel', _onWheel, false );
           }
           else
           {
